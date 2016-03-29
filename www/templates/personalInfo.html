@@ -1,0 +1,36 @@
+<ion-view view-title="编辑资料">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="left">-->
+        <!--<a href="#/tab/detail" class="button button-icon ion-android-arrow-back back" nav-direction="back"></a>-->
+    <!--</ion-nav-buttons>-->
+    <!--<ion-nav-title>-->
+        <!--<div class="bar bar-header">-->
+            <!--<a href="#/tab/dash" class="button button-icon ion-android-arrow-back back" nav-direction="back"></a>-->
+            <!--<h1 class="title">编辑资料</h1>-->
+        <!--</div>-->
+    <!--</ion-nav-title>-->
+
+    <ion-content>
+        <ion-list>
+            <label class="item item-input">
+                <span class="input-label">用户名</span>
+                <input type="text" ng-model="personalInfo.username">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">邮箱</span>
+                <input type="email" ng-model="personalInfo.email">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">电话</span>
+                <input type="tel" ng-model="personalInfo.phone">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">地址</span>
+                <input type="text" ng-model="personalInfo.address">
+            </label>
+            <ion-item class="item-icon-right" href="#/menu/personalInfo/edit_pwd">修改密码<i class="icon ion-chevron-right icon-accessory"></i></ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

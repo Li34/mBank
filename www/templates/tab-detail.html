@@ -1,0 +1,41 @@
+<ion-view view-title="账单明细" hide-back-button="true">
+    <!--<ion-nav-title>-->
+        <!--<div class="bar bar-header">-->
+            <!--<h1 class="title">账单明细</h1>-->
+            <!--<button class="button icon ion-pie-graph"></button>-->
+            <!--&lt;!&ndash;<button class="button icon ion-stats-bars"></button>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</ion-nav-title>-->
+    <div class="row my-table has-header">
+        <div class="padding col-33">
+            <ionic-datepicker input-obj="datepickerObject">
+                <p><span>{{datepickerObject.inputDate | date:'MM'}}</span>/{{datepickerObject.inputDate | date:'yyyy'}}<br><button class="button button-small button-icon icon ion-arrow-down-b positive"></button></p>
+            </ionic-datepicker>
+        </div>
+        <div class="col-33" ng-click="nowSelected()">
+            <h4>{{tableObj.middleLabel}}：</h4>
+            <span>{{tableObj.inComeTotal}}</span>
+        </div>
+        <div class="col-33">
+            <h4>{{tableObj.rightLabel}}：</h4>
+            <span>{{tableObj.payTotal}}</span>
+        </div>
+    </div>
+    <ion-content style="margin-top: 85px">
+        <ion-list>
+            <ion-item ng-repeat="item in items" ng-class="{active:isActive(item,$index)}" ng-href="#/tab/detail/1">
+                <span class="pay-time" ng-if="$index!=0&&item.date!=items[$index-1].date">{{item.date | date:'dd - EEE'}}</span>
+                <span class="pay-time" ng-if="$index==0">{{item.date | date:'dd - EEE'}}</span>
+                <span class="pay-category"><i class="icon {{item.category.icon}}"> {{item.category.name}}</i></span>
+                <span class="pay-money" ng-if="item.isincome">+{{item.money}}</span>
+                <span class="pay-money" ng-if="!item.isincome">-{{item.money}}</span>
+                <ion-option-button class="button-info" ng-click="">
+                    编辑
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="removeBill(item)">
+                    删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

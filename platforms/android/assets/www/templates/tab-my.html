@@ -1,0 +1,29 @@
+<ion-view view-title="个性设置">
+    <ion-nav-bar class="bar-assertive nav-title-slide-full">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <!--<ion-item class="item-avatar-left item-icon-right" href="#/personalInfo">-->
+                <!--<img src="./img/ben.png">-->
+                <!--<h2>admin</h2>-->
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--</ion-item>-->
+            <ion-item class="item-icon-right">分类管理<i class="icon ion-chevron-right icon-accessory"></i></ion-item>
+            <ion-toggle ng-model="settings.localStorage" ng-change="changeLocal()">本地缓存</ion-toggle>
+            <ion-item>清空缓存</ion-item>
+            <ion-item ng-click="changeTheme($event)">切换主题</ion-item>
+            <ion-item>版本号</ion-item>
+            <button class="button button-assertive button-block" ng-click="quit()">退出</button>
+        </ion-list>
+    </ion-content>
+    <script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view style="height: 100px;">
+        <ion-radio name="theme" ng-repeat="item in themeList" ng-value="item.value" ng-model="settings.theme">{{item.text}}</ion-radio>
+    </ion-popover-view>
+    </script>
+</ion-view>

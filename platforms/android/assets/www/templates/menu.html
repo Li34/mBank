@@ -1,0 +1,26 @@
+<ion-side-menus>
+    <ion-side-menu side="left" class="wrapper-left">
+        <!--<ion-header-bar align-title="center" class="bar-assertive"><h1 class="title">Admin</h1></ion-header-bar>-->
+        <ion-content>
+            <ion-list>
+                <ion-item menu-close class="pic-head" href="#/menu/personalInfo" style="border:none">
+                    <img src="./img/ben.png">
+                </ion-item>
+                <ion-toggle class="item-icon-left">
+                    <i class="icon ion-ios-alarm"></i>每日提醒
+                </ion-toggle>
+                <ion-item menu-close class="item-icon-left" href="#/tab/accounting"><i class="icon ion-compose"></i>记账中心</ion-item>
+                <ion-item menu-close href="#/menu/setting" class="item-icon-left"><i class="icon ion-gear-a"></i>个性设置</ion-item>
+                <ion-item menu-close class="item-icon-left" ng-click="syncData()"><i class="icon ion-upload"></i>同步到云</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu-content drag-content="true" edge-drag-threshold="50">
+        <ion-nav-bar class="bar-assertive nav-title-slide-full">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view name="menu" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+</ion-side-menus>

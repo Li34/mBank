@@ -1,0 +1,46 @@
+<ion-view ng-controller="DatepickerCtrl" view-title="报表">
+    <!--<ion-nav-title>-->
+        <!--<div class="bar bar-header">-->
+            <!--<h1 class="title">报表</h1>-->
+            <!--<button class="button icon ion-pie-graph" ng-click="changeData(3)"></button>-->
+            <!--&lt;!&ndash;<button class="button icon ion-stats-bars"></button>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</ion-nav-title>-->
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button icon ion-pie-graph" ng-click="changeData(3)"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding dash">
+        <div class="bar-positive">
+            <div class="button-bar"  my-click>
+                <a class="button active button-small" ng-click="changeData(0)">年</a>
+                <a class="button button-small" ng-click="changeData(1)">月</a>
+                <a class="button button-small" ng-click="changeData(2)">周</a>
+            </div>
+        </div>
+        <button class="button button-icon button-full icon ion-chevron-down" ng-click="isShowData=!isShowData" my-fold></button>
+        <div style="display: none">
+            <span>From :</span>
+            <div class="button-bar">
+                <a class="button button-icon icon ion-chevron-left positive button-small" ng-click="preDay()"></a>
+                <ionic-datepicker input-obj="datepickerObject">
+                    <a class="button button-positive button-small">{{dashDate.from | date:'yyyy - MM - dd'}}</a>
+                </ionic-datepicker>
+                <a class="button button-icon icon ion-chevron-right positive button-small" ng-click="nextDay()"></a>
+            </div>
+            <span>To :</span>
+            <div class="button-bar">
+                <a class="button button-icon icon ion-chevron-left positive button-small" ng-click="preDay()"></a>
+                <ionic-datepicker input-obj="datepickerObject">
+                    <a class="button button-positive button-small">{{dashDate.to | date:'yyyy - MM - dd'}}</a>
+                </ionic-datepicker>
+                <a class="button button-icon icon ion-chevron-right positive button-small" ng-click="nextDay()"></a>
+            </div>
+        </div>
+
+        <div id="main" style="width:330px;height: 300px;"></div>
+    </ion-content>
+</ion-view>

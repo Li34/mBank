@@ -1,0 +1,60 @@
+<ion-view view-title="记账中心">
+    <!--<ion-nav-buttons side="left">-->
+        <!--<div class="nav-button button-bar">-->
+            <!--<a class="button button-assertive" ng-click="payBtn()" ng-class="{active:!myBill.isIncome}">支出</a>-->
+            <!--<a class="button button-assertive" ng-click="incomeBtn()" ng-class="{active:myBill.isIncome}">收入</a>-->
+        <!--</div>-->
+    <!--</ion-nav-buttons>-->
+    <!--<div class="bar bar-subheader bar-assertive">-->
+        <!--<div class="button-bar">-->
+            <!--<a class="button button-assertive" ng-click="payBtn()" ng-class="{active:!myBill.isIncome}">支出</a>-->
+            <!--<a class="button button-assertive" ng-click="incomeBtn()" ng-class="{active:myBill.isIncome}">收入</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <ion-content>
+        <div class="button-bar">
+            <a class="button button-{{settings.theme}} button-small" ng-click="payBtn()" ng-class="{active:!myBill.isincome}">支出</a>
+            <a class="button button-{{settings.theme}} button-small" ng-click="incomeBtn()" ng-class="{active:myBill.isincome}">收入</a>
+        </div>
+        <label class="item item-input">
+            <input type="text" id="money" ng-model="myBill.money" ng-click="clearInput()">
+        </label>
+        <label class="item"  ng-controller="DatepickerCtrl">
+            <ionic-datepicker input-obj="datepickerObject">
+                <button class="button button-positive button-clear button-small" style="font-size: 15px">{{datepickerObject.inputDate | date:'yyyy - MM - dd'}}</button>
+            </ionic-datepicker>
+
+        </label>
+        <div class="padding category">
+            <ion-scroll>
+                <div>
+                    <a class="button button-icon icon {{category.icon}}" data-name="{{category.name}}" data-icon="{{category.icon}}" data-category="{{category.c_id}}" ng-repeat="category in categorys" my-category>
+                        <span>{{category.name}}</span>
+                    </a>
+                    <button class="button icon ion-android-add" ng-click="addCategory()" id="addCategory"></button>
+                </div>
+            </ion-scroll>
+            <!--<ion-slide-box active-slide="myActiveSlide">-->
+                <!--<ion-slide>-->
+                    <!--<div class="padding">-->
+                        <!--<a class="button button-icon icon {{category.myIcon}}" data-category="{{category.id}}" ng-repeat="category in categorys" my-category>-->
+                            <!--<span>{{category.text}}</span>-->
+                        <!--</a>-->
+                        <!--<button class="button icon ion-android-add" ng-click="addCategory()" id="addCategory"></button>-->
+                    <!--</div>-->
+                <!--</ion-slide>-->
+            <!--</ion-slide-box>-->
+        </div>
+        <div class="remarks row">
+        <i class="col-33"></i><span class="col-33">备注</span><i class="col-33"></i>
+        </div>
+        <label class="item item-input label-textarea">
+            <textarea rows="6" placeholder="说点什么吧..." ng-model="myBill.remark"></textarea>
+        </label>
+        <div class="row btn-three">
+            <a class="button button-{{settings.theme}} col-20" ng-click="saveDone()">保存</a>
+            <button class="button button-{{settings.theme}} col-20" ng-click="cancelData()">取消</button>
+            <button class="button button-{{settings.theme}} col-50" ng-click="againDone()">再记一笔</button>
+        </div>
+    </ion-content>
+</ion-view>

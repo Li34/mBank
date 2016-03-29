@@ -1,0 +1,53 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+
+<ion-side-menus>
+    <ion-side-menu side="left" class="wrapper-left">
+        <!--<ion-header-bar align-title="center" class="bar-assertive"><h1 class="title">Admin</h1></ion-header-bar>-->
+        <ion-content>
+            <ion-list>
+                <ion-item menu-close class="pic-head" href="#/menu/personalInfo" style="border:none">
+                    <img src="./img/ben.png">
+                </ion-item>
+                <ion-toggle class="item-icon-left">
+                    <i class="icon ion-ios-alarm"></i>每日提醒
+                </ion-toggle>
+                <ion-item menu-close class="item-icon-left" href="#/tab/accounting"><i class="icon ion-compose"></i>记账中心</ion-item>
+                <ion-item menu-close href="#/menu/setting" class="item-icon-left"><i class="icon ion-gear-a"></i>个性设置</ion-item>
+                <ion-item menu-close class="item-icon-left" ng-click="syncData()"><i class="icon ion-upload"></i>同步到云</ion-item>
+                <!--<ion-item href="#/login">登录</ion-item>-->
+                <!--<ion-item ng-click="isLogin()">isLogin</ion-item>-->
+                <!--<ion-item href="#/welcome">welcome</ion-item>-->
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu-content drag-content="true" edge-drag-threshold="50">
+        <ion-nav-bar class="bar-{{settings.theme}} nav-title-slide-full">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-tabs class="tabs-icon-top tabs-color-active-assertive" ng-class="{'tabs-item-hide': $root.hideTabs}">
+
+            <!-- Dashboard Tab -->
+            <ion-tab title="报表" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
+                <ion-nav-view name="tab-dash"></ion-nav-view>
+            </ion-tab>
+
+            <ion-tab title="明细" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/detail">
+                <ion-nav-view name="tab-detail"></ion-nav-view>
+            </ion-tab>
+
+            <!-- accounting Tab -->
+            <ion-tab title="记账" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" href="#/tab/accounting">
+                <ion-nav-view name="tab-accounting"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+
+    </ion-side-menu-content>
+</ion-side-menus>
+
+

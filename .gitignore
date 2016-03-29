@@ -1,0 +1,5 @@
+.idea
+.DS_Store
+statics/.DS_Store
+statics/webpack.config.js
+

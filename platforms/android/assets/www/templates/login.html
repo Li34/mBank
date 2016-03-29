@@ -1,0 +1,41 @@
+<ion-view view-title="mBank" hide-back-button="true">
+    <ion-nav-bar class="bar-assertive nav-title-slide-full">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <div ng-form="loginForm">
+            <div class="head-pic" id="head-pic"><i class="icon ion-camera" ng-show="isShow" my-head-pic></i></div>
+            <label class="item item-input">
+                <i class="icon ion-ios-person-outline positive"></i>
+                <input type="text" placeholder="请输入用户名" name="username" ng-model="user.username" ng-required="true" pattern="^\w{6,18}$">
+                <div class="assertive" ng-show="loginForm.username.$error.pattern">
+                    *用户名必须为6-18个字母、数字或下划线
+                </div>
+
+            </label>
+            <label class="item item-input">
+                <i class="icon ion-ios-unlocked-outline positive"></i>
+                <input type="password" placeholder="请输入密码" ng-model="user.password">
+            </label>
+            <label class="item item-input" ng-show="isShow">
+                <i class="icon ion-ios-unlocked-outline positive"></i>
+                <input type="password" placeholder="请重复密码" ng-model="user.reppwd">
+            </label>
+            <label class="item item-input" ng-show="isShow">
+                <i class="icon ion-ios-email-outline positive"></i>
+                <input type="email" placeholder="请输入邮箱" ng-model="user.email" name="email" pattern="" ng-required="true">
+                <div class="assertive" ng-show="loginForm.email.$error.pattern">
+                    *用户名必须为6-18个字母、数字或下划线
+                </div>
+            </label>
+            <!--<label class="item item-input">-->
+            <!--<ion-checkbox>记住密码</ion-checkbox>-->
+            <!--</label>-->
+            <a class="button button-positive button-full" href="javascript:0" ng-click="doLogin()" ng-show="!isShow">登录</a>
+            <a class="button button-energized button-full" href="javascript:0" ng-click="doRegister()" ng-show="!isShow">注册</a>
+            <a class="button button-energized button-full" href="javascript:0" ng-click="doRegister()" ng-disabled="loginForm.$invalid" ng-show="isShow">注册</a>
+            <a class="button button-calm button-full" href="javascript:0" ng-click="cancelRegister()" ng-show="isShow">取消</a>
+        </div>
+    </ion-content>
+</ion-view>
