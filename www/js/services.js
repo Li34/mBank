@@ -104,7 +104,7 @@ angular.module('mBank.services', [], function ($httpProvider) {
                             payData.splice(j,1);
                         }
                     }
-                    total = total?total:'-';
+                    total = total?total:'0';
                     obj.push(total);
                 }
                 return obj;
@@ -122,7 +122,7 @@ angular.module('mBank.services', [], function ($httpProvider) {
                             payData.splice(j,1);
                         }
                     }
-                    total = total?total:'-';
+                    total = total?total:'0';
                     obj.push(total);
                 }console.log(obj);
                 return obj;
@@ -134,14 +134,13 @@ angular.module('mBank.services', [], function ($httpProvider) {
                     var total = 0;
                     for(var j=0;j<payData.length;j++){
                         var date = new Date(payData[j].date);
-//                        start = new Date(start);
-//                        end = new Date(end);
-                        if(date>=start && date<=end && date.getDay()==i){
+                        var week = date.getDay()==0?7:date.getDay();
+                        if(date>=start && date<=end && week==i){
                             total += parseFloat(payData[j].money);
                             payData.splice(j,1);
                         }
                     }
-                    total = total?total:'-';
+                    total = total?total:'0';
                     obj.push(total);
                 }
                 console.log(obj)

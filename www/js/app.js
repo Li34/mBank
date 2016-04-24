@@ -45,9 +45,9 @@ angular.module('mBank', ['ionic', 'ngCordova','mBank.controllers', 'mBank.servic
             }else{
                 if(window.localStorage['once']=='true'){
                     $state.go('welcome');
-                    window.localStorage['once'] = false;
+//                    localStorage.removeItem ("once")
                 }else{
-                    $state.go('login')
+                    $state.go('login');
                 }
 
             }

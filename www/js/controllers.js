@@ -107,7 +107,8 @@ angular.module('mBank.controllers', [])
       console.log(index)
       if (index == 3) {
         $scope.loadShow();
-        $timeout(function () {
+          window.localStorage['once'] = false;
+          $timeout(function () {
           $scope.loadHide();
           $scope.isLogin();
         }, 1000);
@@ -713,16 +714,15 @@ angular.module('mBank.controllers', [])
       var now = new Date();
       var year = now.getFullYear();
       var month = now.getMonth() + 1 >= 10 ? now.getMonth() + 1 : '0' + (now.getMonth() + 1);
-      var day = now.getDate() >= 10 ? now.getDate() : '0' + now.getDate();
-      var week = now.getDay();
+      var day = now.getDate();
+      var week = now.getDay()==0?7:now.getDay();
       var start = day - (week - 1);
-      var start_week = new Date($scope.dateFormat(new Date(now.setDate(start))) + ' 00:00:00');
-      var end_week = new Date($scope.dateFormat(new Date(now.setDate(start + 6))) + ' 23:59:59');
+      var start_week = new Date($scope.dateFormat(new Date(now.setDate(start))));console.log(start_week)
+      var end_week = new Date($scope.dateFormat(new Date(now.setDate(start + 6))));console.log(start_week+'::'+end_week)
       for (var i = start; i <= start + 6; i++) {
         var date = $scope.dateFormat(new Date(new Date().setDate(i))).substr(5, 5);
         label.push(date);
       }
-      console.log(index)
       switch (index) {
         case 0:
           obj = DashService.getFullYearData(year);
@@ -930,7 +930,7 @@ angular.module('mBank.controllers', [])
     $scope.saveData = function () {
       var param = {};
       for (var i in this.myBill) {
-        if (this.myBill.hasOwnProperty(i)) {
+        if (this.myBill.hasOwnProperty(i)) {console.log(this.myBill[i])
           param[i] = this.myBill[i];
         }
       }
@@ -940,7 +940,7 @@ angular.module('mBank.controllers', [])
       console.log(param)
       if (!param.money) {
         $scope.showAlert('温馨提示', '<b>请填写金额！</b>');
-      } else if (!param.category) {
+      } else if (!param.category.name) {
         $scope.showAlert('温馨提示', '<b>请选择分类！</b>');
       } else {
         if ($scope.settings.localStorage) {
