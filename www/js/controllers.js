@@ -3,7 +3,7 @@ angular.module('mBank.controllers', [])
   .controller('AppCtrl', ['$rootScope', '$state', '$ionicPopup', 'SyncService', 'localService', '$ionicHistory', '$ionicLoading', '$timeout', function ($rootScope, $state, $ionicPopup, SyncService, localService, $ionicHistory, $ionicLoading, $timeout) {
     $rootScope.isLogin = function () {
       if (window.localStorage['username'] && window.localStorage['password']) {
-        $state.go('tab.accounting');
+        $state.go('tab.detail');
         console.log('home')
         return true;
       }
