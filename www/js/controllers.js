@@ -107,8 +107,8 @@ angular.module('mBank.controllers', [])
       console.log(index)
       if (index == 3) {
         $scope.loadShow();
-          window.localStorage['once'] = false;
-          $timeout(function () {
+        window.localStorage['once'] = false;
+        $timeout(function () {
           $scope.loadHide();
           $scope.isLogin();
         }, 1000);
@@ -123,24 +123,26 @@ angular.module('mBank.controllers', [])
     $scope.user = {};
     $scope.isShow = false;
     $scope.error = {
-      name:'用户名不能为空',
-      pwd:'密码不能为空'
+      name: '用户名不能为空',
+      pwd: '密码不能为空'
     };
 //        $ionicSideMenuDelegate.canDragContent(false);
     $scope.doLogin = function () {
-      
-      if(this.user.username!=undefined&&this.user.password!=undefined){
+
+      if (this.user.username != undefined && this.user.password != undefined) {
         LoginService.login(this.user).success(function (rep) {
-          if(rep.code == 200){
+          if (rep.code == 200) {
+            console.log(rep)
             window.localStorage['username'] = rep.data.username;
             window.localStorage['password'] = rep.data.password;
             window.localStorage['user_id'] = rep.data.id;
-          }else{
+          } else {
             console.log('login-error');
           }
+          console.log('islogin')
           $scope.isLogin();
-        }).error(function (data,status) {
-          console.log(status);
+        }).error(function (data, status) {
+          console.log('网络错误');
         })
       }
 
@@ -209,7 +211,7 @@ angular.module('mBank.controllers', [])
         }
       })
     };
-    $scope.imageSrc = './img/ben.png';
+    // $scope.imageSrc = './img/ben.png';
     $scope.takePhoto = function () {
 //            var options = {
 //                quality: 100,
@@ -717,10 +719,12 @@ angular.module('mBank.controllers', [])
       var year = now.getFullYear();
       var month = now.getMonth() + 1 >= 10 ? now.getMonth() + 1 : '0' + (now.getMonth() + 1);
       var day = now.getDate();
-      var week = now.getDay()==0?7:now.getDay();
+      var week = now.getDay() == 0 ? 7 : now.getDay();
       var start = day - (week - 1);
-      var start_week = new Date($scope.dateFormat(new Date(now.setDate(start))));console.log(start_week)
-      var end_week = new Date($scope.dateFormat(new Date(now.setDate(start + 6))));console.log(start_week+'::'+end_week)
+      var start_week = new Date($scope.dateFormat(new Date(now.setDate(start))));
+      console.log(start_week)
+      var end_week = new Date($scope.dateFormat(new Date(now.setDate(start + 6))));
+      console.log(start_week + '::' + end_week)
       for (var i = start; i <= start + 6; i++) {
         var date = $scope.dateFormat(new Date(new Date().setDate(i))).substr(5, 5);
         label.push(date);
@@ -756,10 +760,10 @@ angular.module('mBank.controllers', [])
           break;
         case 6:
           obj = DashService.getPayData();
-          if($scope.changeNum==0){
+          if ($scope.changeNum == 0) {
             $scope.changeNum = 3;
             this.drawPie(obj);
-          }else{
+          } else {
             $scope.changeNum = 0;
             obj = DashService.getFullYearData(year);
             label = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -779,11 +783,11 @@ angular.module('mBank.controllers', [])
         temp.name = obj[i].category.name;
 
         var tag = category.indexOf(obj[i].category.name);
-        if (tag==-1) {
+        if (tag == -1) {
           category.push(obj[i].category.name)
           data.push(temp);
         } else {
-          data[tag].value = parseFloat(data[tag].value)+parseFloat(temp.value)
+          data[tag].value = parseFloat(data[tag].value) + parseFloat(temp.value)
         }
       }
       require(
@@ -843,7 +847,8 @@ angular.module('mBank.controllers', [])
 
           myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
             var selected = param.selected;
-            console.log(param);console.log(this)
+            console.log(param);
+            console.log(this)
             var serie;
             for (var idx in selected) {
               serie = option.series[idx];
@@ -932,7 +937,8 @@ angular.module('mBank.controllers', [])
     $scope.saveData = function () {
       var param = {};
       for (var i in this.myBill) {
-        if (this.myBill.hasOwnProperty(i)) {console.log(this.myBill[i])
+        if (this.myBill.hasOwnProperty(i)) {
+          console.log(this.myBill[i])
           param[i] = this.myBill[i];
         }
       }
