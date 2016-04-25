@@ -122,25 +122,27 @@ angular.module('mBank.controllers', [])
 
     $scope.user = {};
     $scope.isShow = false;
+    $scope.error = {
+      name:'用户名不能为空',
+      pwd:'密码不能为空'
+    };
 //        $ionicSideMenuDelegate.canDragContent(false);
     $scope.doLogin = function () {
-      window.localStorage['username'] = this.user.username;
-      window.localStorage['password'] = this.user.password;
-      $scope.isLogin();
-//            window.localStorage['user_id'] = rep.data.id;
-//            LoginService.login(this.user).success(function (rep) {
-//                console.log(rep);
-//                if(rep.code == '400'){
-//                    window.localStorage['username'] = rep.data.username;
-//                    window.localStorage['password'] = rep.data.password;
-//                    window.localStorage['user_id'] = rep.data.id;
-//                }else{
-//                    console.log('login-error');
-//                }
-//                $scope.isLogin();
-//            }).error(function (data,status) {
-//                console.log(status);
-//            })
+      
+      if(this.user.username!=undefined&&this.user.password!=undefined){
+        LoginService.login(this.user).success(function (rep) {
+          if(rep.code == 200){
+            window.localStorage['username'] = rep.data.username;
+            window.localStorage['password'] = rep.data.password;
+            window.localStorage['user_id'] = rep.data.id;
+          }else{
+            console.log('login-error');
+          }
+          $scope.isLogin();
+        }).error(function (data,status) {
+          console.log(status);
+        })
+      }
 
     };
     $scope.loginByQQ = function () {

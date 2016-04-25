@@ -49,15 +49,25 @@ angular.module('mBank.services', [], function ($httpProvider) {
 //                return $http.post(API_REGISTER,{mBank:JSON.stringify(param_json),req:'register'});
 //            }
             register: function (param_json,imageSrc,win,fail) {
-                var options = new FileUploadOptions();
-                options.fileKey = "file";
-                var fileURL = imageSrc;
-                options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
-                options.mimeType = "image/jpeg";
-                options.params = {mBank:JSON.stringify(param_json)};
+                if(imageSrc){
+                    var options = new FileUploadOptions();
+                    options.fileKey = "file";
+                    var fileURL = imageSrc;
+                    options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+                    options.mimeType = "image/jpeg";
+                    options.params = {mBank:JSON.stringify(param_json)};
 
-                var ft = new FileTransfer();
-                ft.upload(fileURL, encodeURI(API_REGISTER), win, fail, options);
+                    var ft = new FileTransfer();
+                    ft.upload(fileURL, encodeURI(API_REGISTER), win, fail, options);
+                }else{
+                    $http.post(API_REGISTER,{mBank:JSON.stringify(param_json),req:'register'})
+                      .success(function (result) {
+                          console.log(result);
+                      })
+                      .error(function () {
+                          console.log('error')
+                      })
+                }
             }
         }
     })

@@ -194,8 +194,10 @@ angular.module('mBank', ['ionic', 'ngCordova','mBank.controllers', 'mBank.servic
         $urlRouterProvider.otherwise('/tab/detail');
 
     });
-var API_LOGIN = 'http://localhost/project/mBank/index.php/login/Login';
-var API_REGISTER = 'http://10.7.10.38/project/test/index.php/register';
-var API_ADDBILL = 'http://10.7.10.38/project/test/index.php/addBill';
-var API_DETAIL = 'http://10.7.10.38/project/test/index.php/list';
-var API_SYNC = 'http://10.7.10.38/project/test/index.php/sync';
+var LOCALHOST = 'http://223.202.85.115/';
+// var LOCALHOST = 'http://127.0.0.1/';
+var API_LOGIN = LOCALHOST+'API/mbank/index.php/login';
+var API_REGISTER = LOCALHOST+'API/mbank/index.php/register';
+var API_ADDBILL = LOCALHOST+'API/mbank/index.php/addBill';
+var API_DETAIL = LOCALHOST+'API/mbank/index.php/list';
+var API_SYNC = LOCALHOST+'API/mbank/index.php/sync';
