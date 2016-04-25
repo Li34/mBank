@@ -1,4 +1,10 @@
 <ion-view view-title="记账中心">
+    <ion-nav-buttons side="left">
+        <button ng-click="saveDone()" class="button button-icon icon">保存</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button ng-click="cancelData()" class="button button-icon icon">取消</button>
+    </ion-nav-buttons>
     <ion-content>
         <div class="button-bar">
             <a class="button button-{{settings.theme}} button-small" ng-click="payBtn()" ng-class="{active:!myBill.isincome}">支出</a>
@@ -39,11 +45,14 @@
         <label class="item item-input label-textarea">
             <textarea rows="6" placeholder="说点什么吧..." ng-model="myBill.remark"></textarea>
         </label>
-        <div class="row btn-three">
-            <a class="button button-{{settings.theme}} col-20" ng-click="saveDone()">保存</a>
-            <button class="button button-{{settings.theme}} col-20" ng-click="cancelData()">取消</button>
-            <button class="button button-{{settings.theme}} col-50" ng-click="againDone()">再记一笔</button>
+        <div class="padding">
+            <button class="button button-{{settings.theme}} button-block" ng-click="againDone()">再记一笔</button>
         </div>
-        <div><a class="button icon ion-ios-undo toBack"></a></div>
+        <!--<div class="row btn-three">-->
+            <!--&lt;!&ndash;<a class="button button-{{settings.theme}} col-20" ng-click="saveDone()">保存</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button class="button button-{{settings.theme}} col-20" ng-click="cancelData()">取消</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button class="button button-{{settings.theme}} col-50" ng-click="againDone()">再记一笔</button>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div><a class="button button-icon icon ion-ios-undo toBack"></a></div>-->
     </ion-content>
 </ion-view>

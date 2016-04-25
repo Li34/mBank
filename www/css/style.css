@@ -253,18 +253,25 @@ a.qqlogin{
 }
 a.button.icon.button-icon.addBill:before{
     font-size: 60px;
-    color: greenyellow;
+    color: red;
 }
 .addBill{
     position: absolute;
+    font-size: 60px;
     top: 350px;
     right: 30px;
 }
 a.button.icon.button-icon.toBack:before{
-    font-size: 60px;
+    font-size: 50px;
     color: darkgreen;
 }
 a.toBack{
-    border-radius: 50%;
-    background: #eee;
+    /*background: darkgreen;*/
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    z-index: 999;
+}
+div.btn-padding{
+    /*padding: 0 50px;*/
 }

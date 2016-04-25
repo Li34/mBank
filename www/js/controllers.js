@@ -86,6 +86,9 @@ angular.module('mBank.controllers', [])
 
       return date.getFullYear() + '-' + month + '-' + day;
     };
+    $rootScope.changeLocal = function () {
+      window.localStorage['local'] = $rootScope.settings.localStorage;
+    };
     $rootScope.backPage = function () {
       console.log('back');
 //            $ionicHistory.goBack(-1);
@@ -904,7 +907,6 @@ angular.module('mBank.controllers', [])
       }
     };
     $scope.cancelData = function () {
-      console.log('cancel');
       $scope.myBill = {
         isincome: false,
         money: 0,
@@ -915,6 +917,7 @@ angular.module('mBank.controllers', [])
         isupdate: false,
         isnew: true
       };
+      $state.go('tab.detail');
     };
     $scope.againDone = function () {
       this.saveData();
@@ -979,9 +982,9 @@ angular.module('mBank.controllers', [])
       {text: "黑", value: 'dark'},
       {text: "绿", value: 'balanced'}
     ];
-    $scope.changeLocal = function () {
-      window.localStorage['local'] = $scope.settings.localStorage;
-    }
+    // $scope.changeLocal = function () {
+    //   window.localStorage['local'] = $scope.settings.localStorage;
+    // }
 
   })
 
