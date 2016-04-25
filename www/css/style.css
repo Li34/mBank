@@ -251,3 +251,20 @@ a.qqlogin{
 #main{
     margin: 0 auto;
 }
+a.button.icon.button-icon.addBill:before{
+    font-size: 60px;
+    color: greenyellow;
+}
+.addBill{
+    position: absolute;
+    top: 350px;
+    right: 30px;
+}
+a.button.icon.button-icon.toBack:before{
+    font-size: 60px;
+    color: darkgreen;
+}
+a.toBack{
+    border-radius: 50%;
+    background: #eee;
+}

@@ -1,16 +1,4 @@
 <ion-view view-title="记账中心">
-    <!--<ion-nav-buttons side="left">-->
-        <!--<div class="nav-button button-bar">-->
-            <!--<a class="button button-assertive" ng-click="payBtn()" ng-class="{active:!myBill.isIncome}">支出</a>-->
-            <!--<a class="button button-assertive" ng-click="incomeBtn()" ng-class="{active:myBill.isIncome}">收入</a>-->
-        <!--</div>-->
-    <!--</ion-nav-buttons>-->
-    <!--<div class="bar bar-subheader bar-assertive">-->
-        <!--<div class="button-bar">-->
-            <!--<a class="button button-assertive" ng-click="payBtn()" ng-class="{active:!myBill.isIncome}">支出</a>-->
-            <!--<a class="button button-assertive" ng-click="incomeBtn()" ng-class="{active:myBill.isIncome}">收入</a>-->
-        <!--</div>-->
-    <!--</div>-->
     <ion-content>
         <div class="button-bar">
             <a class="button button-{{settings.theme}} button-small" ng-click="payBtn()" ng-class="{active:!myBill.isincome}">支出</a>
@@ -56,5 +44,6 @@
             <button class="button button-{{settings.theme}} col-20" ng-click="cancelData()">取消</button>
             <button class="button button-{{settings.theme}} col-50" ng-click="againDone()">再记一笔</button>
         </div>
+        <div><a class="button icon ion-ios-undo toBack"></a></div>
     </ion-content>
 </ion-view>

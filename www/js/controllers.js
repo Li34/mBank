@@ -584,14 +584,6 @@ angular.module('mBank.controllers', [])
     $scope.isShowDate = false;
     $scope.changeNum = 0;
     $scope.drawLine = function (obj, label) {
-//            console.log(DashService.getFullYearData('2016'));
-//            var data = [];
-//            for(var i=0;i<obj.length;i++){
-//                var temp = {};
-//                temp.value = obj[i].category;
-//                temp.name = obj[i].money;
-//                data.push(temp.value);
-//            }
       require(
         [
           'echarts',
@@ -649,69 +641,6 @@ angular.module('mBank.controllers', [])
         }
       )
     };
-    // $scope.drawCircle = function (obj) {
-    //     var data = [];
-    //     for(var i=0;i<obj.length;i++){
-    //         var temp = {};
-    //         temp.value = obj[i].category.name;
-    //         temp.name = obj[i].money;
-    //         data.push(temp);
-    //     }
-    //
-    //     require(
-    //         [
-    //             'echarts',
-    //             'echarts/chart/pie'
-    //         ],
-    //         function (ec) {
-    //             var myChart = ec.init(document.getElementById('main'));
-    //             var option = {
-    //                 calculable : false,
-    //                 series : [
-    //                     {
-    //                         type:'pie',
-    //                         selectedMode: 'single',
-    //                         radius : ['50%', '90%'],
-    //                         itemStyle : {
-    //                             normal : {
-    //                                 label : {
-    //                                     position : 'inner',
-    //                                     formatter:function(params){
-    //
-    //                                         return params.value;
-    //                                     },
-    //                                     textStyle:{
-    //                                         baseline:'top'
-    //                                     },
-    //                                     show : true
-    //                                 },
-    //                                 labelLine : {
-    //                                     show : false
-    //                                 }
-    //                             },
-    //                             emphasis : {
-    //                                 label : {
-    //                                     show : true,
-    //                                     position : 'center',
-    //                                     textStyle : {
-    //                                         fontSize : '20',
-    //                                         fontWeight : 'bold'
-    //                                     }
-    //                                 }
-    //                             }
-    //                         },
-    //
-    //                         data:data
-    //                     }
-    //                 ]
-    //             };
-    //
-    //
-    //             myChart.setOption(option);
-    //         }
-    //     )
-    // };
-//        $scope.drawLine(DashService.getFullYearData('2015'));
     $scope.changeData = function (index) {
       var obj = [];
       var label = [];
@@ -722,9 +651,7 @@ angular.module('mBank.controllers', [])
       var week = now.getDay() == 0 ? 7 : now.getDay();
       var start = day - (week - 1);
       var start_week = new Date($scope.dateFormat(new Date(now.setDate(start))));
-      console.log(start_week)
       var end_week = new Date($scope.dateFormat(new Date(now.setDate(start + 6))));
-      console.log(start_week + '::' + end_week)
       for (var i = start; i <= start + 6; i++) {
         var date = $scope.dateFormat(new Date(new Date().setDate(i))).substr(5, 5);
         label.push(date);
@@ -742,7 +669,7 @@ angular.module('mBank.controllers', [])
           break;
         case 2:
           obj = DashService.getFullWeekData(start_week, end_week);
-//                    label = ['周一','周二','周三','周四','周五','周六','周日'];
+//        label = ['周一','周二','周三','周四','周五','周六','周日'];
           label = label;
           this.drawLine(obj, label);
           break;
@@ -868,7 +795,6 @@ angular.module('mBank.controllers', [])
           });
         })
     };
-//        $scope.drawPie();
   })
 
   .controller('AccountingCtrl', function ($scope, AccountService, $ionicPopup, $state) {

@@ -131,11 +131,11 @@ angular.module('mBank', ['ionic', 'ngCordova', 'mBank.controllers', 'mBank.servi
         }
       })
 
-      .state('tab.accounting', {
+      .state('menu.accounting', {
         url: '/accounting',
         cache: false,
         views: {
-          'tab-accounting': {
+          'menu': {
             templateUrl: 'templates/tab-accounting.html',
             controller: 'AccountingCtrl'
           }
@@ -161,10 +161,10 @@ angular.module('mBank', ['ionic', 'ngCordova', 'mBank.controllers', 'mBank.servi
       //                }
       //            })
 
-      .state('menu.setting', {
+      .state('tab.setting', {
         url: '/setting',
         views: {
-          'menu': {
+          'tab-setting': {
             templateUrl: 'templates/tab-my.html',
             controller: 'SettingCtrl'
           }
