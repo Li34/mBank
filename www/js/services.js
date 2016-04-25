@@ -42,13 +42,12 @@ angular.module('mBank.services', [], function ($httpProvider) {
 
   .factory('LoginService', function ($http) {
     return {
-
+      token:function () {
+        return
+      },
       login: function (param_json) {
         return $http.post(API_LOGIN, {mBank: JSON.stringify(param_json), req: 'login'});
       },
-//            register: function (param_json) {
-//                return $http.post(API_REGISTER,{mBank:JSON.stringify(param_json),req:'register'});
-//            }
       register: function (param_json, imageSrc, win, fail) {
         if (imageSrc) {
           var options = new FileUploadOptions();
@@ -86,8 +85,8 @@ angular.module('mBank.services', [], function ($httpProvider) {
       getPayData: function () {
         var obj = [];
         var allData = localService.getFromLocal();
-        for (var i = 0; i < allData.length; i++) {
-          if (!allData[i].isincome && !allData[i].isDelete) {
+        for (var i = 0; i < allData.length; i++) {console.log(allData[i].user_id)
+          if (!allData[i].isincome && !allData[i].isDelete && allData[i].user_id == window.localStorage['user_id']) {
             obj.push(allData[i]);
           }
         }
@@ -97,7 +96,7 @@ angular.module('mBank.services', [], function ($httpProvider) {
         var obj = [];
         var allData = localService.getFromLocal();
         for (var i = 0; i < allData.length; i++) {
-          if (allData[i].isincome && !allData[i].isDelete) {
+          if (allData[i].isincome && !allData[i].isDelete  && allData[i].user_id == window.localStorage['user_id']) {
             obj.push(allData[i]);
           }
         }
@@ -198,7 +197,7 @@ angular.module('mBank.services', [], function ($httpProvider) {
           }
         };
         for (var i = 0; i < objArr.length; i++) {
-          if (objArr[i].date.substr(0, 7) == month && !objArr[i].isDelete) {
+          if (objArr[i].date.substr(0, 7) == month && !objArr[i].isDelete && objArr[i].user_id == window.localStorage['user_id']) {
             obj.nowArr.push(objArr[i]);
             if (objArr[i].isincome)
               obj.total.income += parseFloat(objArr[i].money);
